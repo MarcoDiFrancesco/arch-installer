@@ -94,8 +94,8 @@ read -r sure
 #    print_info "Type the keymap code (es. en): "
 #    read -r keyboard
 #done
-#loadkeys "$keyboard"
-loadkeys us
+keyboard=us
+loadkeys "$keyboard"
 print_ok "Keymap loaded\n"
 
 set -eu
@@ -338,4 +338,4 @@ if $crypt; then
 fi
 
 print_ok "\nEND\n\n"
-
+print_ok "Now you can reboot"
