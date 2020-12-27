@@ -50,7 +50,8 @@ print_help() {
 
 
 ### Parameters management
-crypt=false     # default
+#crypt=false     # default
+crypt=true
 while [ -n "$1" ]; do
     case "$1" in
         -d|--device)
