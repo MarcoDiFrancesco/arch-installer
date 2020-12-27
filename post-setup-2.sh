@@ -33,9 +33,6 @@ yay -Sy --noconfirm $(cat 8ef8e5e39f34ca3b0ec616012fd7df2b/packages-pacman.list)
 # Install all AUR packages (pacman -Qqm) 
 yay -Sy --noconfirm $(cat 8ef8e5e39f34ca3b0ec616012fd7df2b/packages-aur.list)
 
-# Set timezone
-timedatectl set-timezone Europe/Rome
-
 # enable services
 print_info "Enabling some services"
 sudo systemctl enable bluetooth.service
@@ -44,7 +41,8 @@ sudo systemctl enable cronie.service
 sudo systemctl enable docker.service
 print_ok "done"
 
-source ~/.zshrc
 source ~/.zshenv
+source ~/.config/zsh/.zshrc
 print_ok "zshrc and zshenv sourced"
 
+# TODO: install oh-my-zsh-git and all other AUR packages (yay -Qmq)
