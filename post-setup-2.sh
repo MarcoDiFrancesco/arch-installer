@@ -29,9 +29,9 @@ makepkg -si --noconfirm
 print_ok "done"
 
 # Install all pacman packages (pacman -Qqen)
-yay -Sy --noconfirm $(cat 8ef8e5e39f34ca3b0ec616012fd7df2b/packages-pacman.list)
+yay -Sy --noconfirm $(cat /tmp/arch-installer/packages-pacman.list)
 # Install all AUR packages (pacman -Qqm) 
-yay -Sy --noconfirm $(cat 8ef8e5e39f34ca3b0ec616012fd7df2b/packages-aur.list)
+yay -Sy --noconfirm $(cat /tmp/arch-installer/packages-aur.list)
 
 # enable services
 print_info "Enabling some services"
