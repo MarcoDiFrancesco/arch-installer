@@ -10,23 +10,28 @@ print_info() {
 # Exit if some error occurs
 set -e
 
-# Clone config repository creates a bare repository with all files unstaged
-#sudo rm -rf $HOME/projects/dotfiles
-git clone --bare https://github.com/MarcoDiFrancesco/dotfiles $HOME/projects/dotfiles
-# Hard reset is used to make reappear the files
-git --git-dir=$HOME/projects/dotfiles --work-tree=$HOME reset --hard
-# To not show all unstaged files in home directory
-git --git-dir=$HOME/projects/dotfiles --work-tree=$HOME config status.showUntrackedFiles no
+DOTFILESDIR=$HOME/projects/dotfiles
+if [ ! -d $DOTFILESDIR ]; then
+    print_info "Cloning dotfiles directory"
+    # Clone config repository creates a bare repository with all files unstaged
+    git clone --bare https://github.com/MarcoDiFrancesco/dotfiles $DOTFILESDIR
+    # Hard reset is used to make reappear the files
+    git --git-dir=$DOTFILESDIR --work-tree=$HOME reset --hard
+    # To not show all unstaged files in home directory
+    git --git-dir=$DOTFILESDIR --work-tree=$HOME config status.showUntrackedFiles no
+    print_ok "Dotfiles directory cloned"
+fi
 
-# Installing yay
-print_info "Installing yay"
-cd /tmp
-#sudo rm -rf yay # Used for testing
-git clone https://aur.archlinux.org/yay.git
-cd yay
-print_info "Yay cloned"
-makepkg -si --noconfirm
-print_ok "done"
+YAYDIR=/tmp/yay
+if [ ! -d $YAYDIR ]; then
+    # Installing yay
+    print_info "Installing yay"
+    git clone https://aur.archlinux.org/yay.git $YAYDIR
+    print_info "Yay cloned"
+    cd yay
+    makepkg -si --noconfirm
+    print_ok "Yay installed"
+fi
 
 # Install all pacman packages (pacman -Qqen)
 yay -Sy --noconfirm $(cat /tmp/arch-installer/packages-pacman.list)
@@ -44,6 +49,5 @@ print_ok "done"
 
 source ~/.zshenv
 source ~/.config/zsh/.zshrc
+source ~/.config/zsh/.zprofile
 print_ok "zshrc and zshenv sourced"
-
-# TODO: install oh-my-zsh-git and all other AUR packages (yay -Qmq)
