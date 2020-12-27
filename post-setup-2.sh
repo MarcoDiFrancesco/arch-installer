@@ -39,6 +39,7 @@ sudo systemctl enable bluetooth.service
 sudo systemctl enable bumblebeed.service
 sudo systemctl enable cronie.service
 sudo systemctl enable docker.service
+sudo systemctl enable NetworkManager.service
 print_ok "done"
 
 source ~/.zshenv
