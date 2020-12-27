@@ -246,9 +246,9 @@ print_info "Updating archlinux keyring\n"
 pacman -Sy archlinux-keyring --noconfirm
 
 # update and sort mirrors
-print_info "Using 'reflector' to find best mirrors\n"
-pacman -Sy reflector --noconfirm
-reflector -l 100 -f 10 -p https --sort rate --save /etc/pacman.d/mirrorlist
+#print_info "Using 'reflector' to find best mirrors\n"
+#pacman -Sy reflector --noconfirm
+#reflector -l 100 -f 10 -p https --sort rate --save /etc/pacman.d/mirrorlist
 
 # install system
 print_info "Installing basic system\n"
