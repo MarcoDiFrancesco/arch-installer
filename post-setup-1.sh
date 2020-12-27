@@ -33,4 +33,4 @@ ln -sf /usr/share/zoneinfo/Europe/Rome /etc/locatime
 print_ok "localtime linked"
 
 # Changing user
-su - $username
+echo "Now write 'su - $username' to log in and run post-setup-2.sh"
