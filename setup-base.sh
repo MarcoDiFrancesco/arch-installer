@@ -90,11 +90,12 @@ read -r sure
 
 
 ### load keyboard layout
-while [ -z "$keyboard" ] || ! localectl list-keymaps | grep -q "^$keyboard$"; do
-    print_info "Type the keymap code (es. en): "
-    read -r keyboard
-done
-loadkeys "$keyboard"
+#while [ -z "$keyboard" ] || ! localectl list-keymaps | grep -q "^$keyboard$"; do
+#    print_info "Type the keymap code (es. en): "
+#    read -r keyboard
+#done
+#loadkeys "$keyboard"
+loadkeys us
 print_ok "Keymap loaded\n"
 
 set -eu
