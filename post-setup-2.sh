@@ -45,9 +45,4 @@ sudo systemctl enable bumblebeed.service
 sudo systemctl enable cronie.service
 sudo systemctl enable docker.service
 sudo systemctl enable NetworkManager.service
-print_ok "done"
-
-source ~/.zshenv
-source ~/.config/zsh/.zshrc
-source ~/.config/zsh/.zprofile
-print_ok "zshrc and zshenv sourced"
+print_ok "Done, reboot the system"
