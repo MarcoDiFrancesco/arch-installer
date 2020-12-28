@@ -38,6 +38,9 @@ yay -Sy --noconfirm $(cat /tmp/arch-installer/packages-pacman.list)
 # Install all AUR packages (pacman -Qqm) 
 yay -Sy --noconfirm $(cat /tmp/arch-installer/packages-aur.list)
 
+# Install code stats zsh plugin
+sudo git clone https://gitlab.com/code-stats/code-stats-zsh /usr/share/oh-my-zsh/custom/plugins/
+
 # enable services
 print_info "Enabling some services"
 sudo systemctl enable bluetooth.service

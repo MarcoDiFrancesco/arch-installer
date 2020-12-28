@@ -140,8 +140,8 @@ print_info "Partitioning $device\n"
 sgdisk --zap-all "$device"
 if $efi; then
     sgdisk -n 0:0:+260MiB -t 0:ef00 -c 0:BOOT "$device"
-    boot="${device}1"
-    root_dev="${device}2"
+    boot="${device}p1" # p1 for nvme, 1 for hdd
+    root_dev="${device}p2" # p2 for nvme, 2 for hdd
 else
     sgdisk -n 0:0:+1MiB -t 0:ef02 "$device"
     sgdisk -n 0:0:+259MiB -t 0:8304 -c 0:BOOT "$device"

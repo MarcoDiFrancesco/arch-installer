@@ -32,5 +32,8 @@ print_ok "done"
 ln -sf /usr/share/zoneinfo/Europe/Rome /etc/locatime
 print_ok "localtime linked"
 
+# TODO: test this
+locale-gen en_us.UTF-8
+
 # Changing user
 echo "Now write 'su - $username' to log in and run post-setup-2.sh"
