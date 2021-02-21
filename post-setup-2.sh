@@ -28,19 +28,21 @@ if [ ! -d $YAYDIR ]; then
     print_info "Installing yay"
     git clone https://aur.archlinux.org/yay.git $YAYDIR
     print_info "Yay cloned"
-    cd yay
+    cd $YAYDIR
     makepkg -si --noconfirm
     print_ok "Yay installed"
 fi
 
 # Install all pacman packages (pacman -Qqen)
-yay -Sy --noconfirm $(cat /tmp/arch-installer/packages-pacman.list)
+yay -Sy --needed --noconfirm $(cat /tmp/arch-installer/packages-pacman.list)
 # Install all AUR packages (pacman -Qqm) 
-yay -Sy --noconfirm $(cat /tmp/arch-installer/packages-aur.list)
+yay -Sy --needed --noconfirm $(cat /tmp/arch-installer/packages-aur.list)
 
 # Install code stats zsh plugin
-sudo git clone https://gitlab.com/code-stats/code-stats-zsh /usr/share/oh-my-zsh/custom/plugins/
-
+CODESTATSDIR="/usr/share/oh-my-zsh/custom/plugins/"
+if [ ! -d $DOTFILESDIR ]; then
+    sudo git clone https://gitlab.com/code-stats/code-stats-zsh $CODESTATSDIR
+fi
 # enable services
 print_info "Enabling some services"
 sudo systemctl enable bluetooth.service
